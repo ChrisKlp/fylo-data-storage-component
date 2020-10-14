@@ -1,0 +1,222 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.4rem;
+}
+
+.container {
+  padding: 2.5rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: minmax(0, 35rem);
+      grid-template-columns: minmax(0, 35rem);
+  grid-gap: 1.6rem;
+  place-content: center;
+  min-height: 52rem;
+  height: 100vh;
+  background: #0c122c url("../images/bg-mobile.png") no-repeat center/cover;
+}
+
+.control {
+  padding: 3.8rem;
+  background-color: #1d2c67;
+  border-radius: 1rem;
+  border-top-right-radius: 10rem;
+}
+
+.control__buttons {
+  margin-top: 3rem;
+}
+
+.control__buttons button {
+  margin-right: 1.2rem;
+  width: 4.8rem;
+  height: 4.8rem;
+  background-color: #0c122c;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 0;
+  border-radius: 1rem;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.control__buttons button:hover {
+  background-color: #172254;
+}
+
+.control__buttons button:focus {
+  outline: none;
+  background-color: #0d1430;
+}
+
+.control__buttons .btn-document {
+  background-image: url("../images/icon-document.svg");
+}
+
+.control__buttons .btn-folder {
+  background-image: url("../images/icon-folder.svg");
+}
+
+.control__buttons .btn-upload {
+  background-image: url("../images/icon-upload.svg");
+}
+
+.storage {
+  position: relative;
+  padding: 3.2rem 3.2rem 5.4rem;
+  background-color: #1d2c67;
+  color: #dddbff;
+  border-radius: 1rem;
+}
+
+.storage__info {
+  margin-bottom: 1.6rem;
+  text-align: center;
+}
+
+.storage__info span {
+  font-weight: 700;
+}
+
+.storage__bar {
+  margin-bottom: 1rem;
+  padding: 0.3rem;
+  position: relative;
+  height: 2rem;
+  background-color: #141f48;
+  border-radius: 2rem;
+}
+
+.storage__bar-used {
+  position: relative;
+  height: 1.4rem;
+  background: -webkit-gradient(linear, left top, right top, from(#ffa399), to(#ff4d97));
+  background: linear-gradient(90deg, #ffa399, #ff4d97);
+  border-radius: 2rem;
+  -webkit-animation: status-bar 2s both cubic-bezier(0.19, 1, 0.22, 1);
+          animation: status-bar 2s both cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.storage__bar-used::after {
+  top: 0.2rem;
+  right: 0.2rem;
+  position: absolute;
+  background-color: white;
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+.storage__limits {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.storage__badge {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
+  padding: 1.3rem;
+  width: 18rem;
+  text-align: center;
+  color: #0c122c;
+  font-size: 4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: white;
+  border-radius: 1rem;
+}
+
+.storage__badge span {
+  margin-left: 0.8rem;
+  vertical-align: middle;
+  color: #848794;
+  font-size: 1.3rem;
+  letter-spacing: 0.1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    -ms-grid-columns: minmax(0, 35rem) minmax(0, 54rem);
+        grid-template-columns: minmax(0, 35rem) minmax(0, 54rem);
+    gap: 3rem;
+    min-height: auto;
+    background: #0c122c url("../images/bg-desktop.png") bottom/100% 52.5% no-repeat;
+  }
+  .control {
+    margin-bottom: 1rem;
+  }
+  .storage {
+    margin-bottom: 1rem;
+    padding: 3.8rem;
+    -ms-flex-item-align: end;
+        -ms-grid-row-align: end;
+        align-self: end;
+  }
+  .storage__info {
+    text-align: left;
+  }
+  .storage__badge {
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    -webkit-transform: translate(-3.8rem, -67%);
+            transform: translate(-3.8rem, -67%);
+  }
+  .storage__badge::after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    -webkit-transform: translateY(50%);
+            transform: translateY(50%);
+    border-style: solid;
+    border-width: 2.2rem 2.2rem 2.2rem 0;
+    border-color: transparent white transparent transparent;
+    content: '';
+  }
+}
+
+@-webkit-keyframes status-bar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 75%;
+  }
+}
+
+@keyframes status-bar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 75%;
+  }
+}
+/*# sourceMappingURL=style.css.map */

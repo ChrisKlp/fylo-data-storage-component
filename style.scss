@@ -1,0 +1,210 @@
+$color-pale-blue: hsl(243, 100%, 93%);
+$color-grayish-blue: hsl(229, 7%, 55%);
+$color-dark-blue: hsl(228, 56%, 26%);
+$color-very-dark-blue: hsl(229, 57%, 11%);
+$color-very-dark-blue-2: hsl(227, 57%, 18%);
+$color-white: hsl(0, 0%, 100%);
+$gradient-primary: linear-gradient(90deg, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.4rem;
+}
+
+.container {
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 35rem);
+    grid-gap: 1.6rem;
+    place-content: center;
+    min-height: 52rem;
+    height: 100vh;
+    background: $color-very-dark-blue url('../images/bg-mobile.png') no-repeat center / cover;
+}
+
+.control {
+    padding: 3.8rem;
+    background-color: $color-dark-blue;
+    border-radius: 1rem;
+    border-top-right-radius: 10rem;
+
+    &__buttons {
+        margin-top: 3rem;
+
+        button {
+            margin-right: 1.2rem;
+            width: 4.8rem;
+            height: 4.8rem;
+            background-color: $color-very-dark-blue;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 0;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: lighten($color-very-dark-blue, 10%);
+            }
+
+            &:focus {
+                outline: none;
+                background-color: lighten($color-very-dark-blue, 1%);
+            }
+        }
+
+        .btn-document {
+            background-image: url('../images/icon-document.svg');
+        }
+
+        .btn-folder {
+            background-image: url('../images/icon-folder.svg');
+        }
+
+        .btn-upload {
+            background-image: url('../images/icon-upload.svg');
+        }
+    }
+}
+
+.storage {
+    position: relative;
+    padding: 3.2rem 3.2rem 5.4rem;
+    background-color: $color-dark-blue;
+    color: $color-pale-blue;
+    border-radius: 1rem;
+
+    &__info {
+        margin-bottom: 1.6rem;
+        text-align: center;
+
+        span {
+            font-weight: 700;
+        }
+    }
+
+    &__bar {
+        margin-bottom: 1rem;
+        padding: 0.3rem;
+        position: relative;
+        height: 2rem;
+        background-color: $color-very-dark-blue-2;
+        border-radius: 2rem;
+    }
+
+    &__bar-used {
+        position: relative;
+        height: 1.4rem;
+        background: $gradient-primary;
+        border-radius: 2rem;
+        animation: status-bar 2s both cubic-bezier(0.19, 1, 0.22, 1);
+
+        &::after {
+            top: 0.2rem;
+            right: 0.2rem;
+            position: absolute;
+            background-color: $color-white;
+            content: '';
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+        }
+    }
+
+    &__limits {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+
+    &__badge {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        padding: 1.3rem;
+        width: 18rem;
+        text-align: center;
+        color: $color-very-dark-blue;
+        font-size: 4rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        background-color: $color-white;
+        border-radius: 1rem;
+
+        span {
+            margin-left: 0.8rem;
+            vertical-align: middle;
+            color: $color-grayish-blue;
+            font-size: 1.3rem;
+            letter-spacing: 0.1rem;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: minmax(0, 35rem) minmax(0, 54rem);
+        gap: 3rem;
+        min-height: auto;
+        background: $color-very-dark-blue url('../images/bg-desktop.png') bottom / 100% 52.5% no-repeat;
+    }
+
+    .control {
+        margin-bottom: 1rem;
+    }
+
+    .storage {
+        margin-bottom: 1rem;
+        padding: 3.8rem;
+        align-self: end;
+
+        &__info {
+            text-align: left;
+        }
+
+        &__badge {
+            top: 0;
+            right: 0;
+            bottom: auto;
+            left: auto;
+            transform: translate(-3.8rem, -67%);
+
+            &::after {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 0;
+                height: 0;
+                transform: translateY(50%);
+                border-style: solid;
+                border-width: 2.2rem 2.2rem 2.2rem 0;
+                border-color: transparent $color-white transparent transparent;
+                content: '';
+            }
+        }
+    }
+}
+
+@keyframes status-bar {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 75%;
+    }
+}
